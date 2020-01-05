@@ -1,14 +1,18 @@
-console.log("_3_basic_concept");
-console.log("null == undefined ? %o", null == undefined);
-console.log("null === undefined ? %o", null === undefined);
+function doSomethingFunny() {
+    if (arguments.length === 1) {
+        console.log(arguments[0] + 1);
+    } else if (arguments.length === 2) {
+        console.log(arguments[0] + arguments[1]);
+    }
+}
 
-//
-// number
-//
-console.log("Number.MIN_VALUE = %d", Number.MIN_VALUE);
-console.log("Number.MAX_VALUE = %d", Number.MAX_VALUE);
-// 判断一个数字是否在界内 use isFinite(number)
-// 数值转换: Number(), parseInt(), parseFloat()
-console.log("Number(null) = %d", Number(null));
-console.log("Number(undefined) = %d", Number(undefined));
-console.log("number.toString(radix)");
+doSomethingFunny(1);
+doSomethingFunny(1, 3);
+
+function howManyArgs() {
+    console.log(arguments.length);
+}
+
+howManyArgs('string', 45);
+howManyArgs();
+howManyArgs(12);

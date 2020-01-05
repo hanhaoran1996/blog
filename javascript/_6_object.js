@@ -1,33 +1,28 @@
-console.log("_6_object");
+'use strict';
 
-var app = function () {
-    var components = new Array();
-
-    return {
-        getComponentCount: function () {
-            return components.length;
-        },
-        registerComponent: function (component) {
-            if (typeof component === 'object') {
-                components.push(component);
-            }
-        }
-    };
-}();
-
-var singleton = function () {
-    var privateVariable = 10;
-    function privateFunction() {
-        return false;
+(function () {
+    function Parent(name) {
+        this.name = name;
+        this.colors = ['red', 'green', 'blue'];
     }
-
-    var obj = {};
-    obj.publicProperty = true;
-    obj.publicMethod = function () {
-        privateVariable++;
-        return privateFunction();
+    Parent.prototype.showName = function () {
+        console.log(this.name);
     };
 
-    return obj;
-};
+    function Child(name, age) {
+        Parent.call(this, name);
+        this.age = age;
+    }
+    Child.prototype = new Parent();
+    Child.prototype.showAge = function () {
+        console.log(this.age);
+    };
 
+    let child = new Child('John', 28);
+    child.colors.push('yellow');
+    console.log(child.colors);
+    child.showName();
+    child.showAge();
+    child = new Child('Greg', 12);
+    console.log(child.colors);
+})();

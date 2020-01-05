@@ -61,4 +61,7 @@ console.log(fib.valueOf());
 persons[0].fib = fib;
 console.log(persons[0].fib(3));
 
+(function env() {
+
+})();
 
